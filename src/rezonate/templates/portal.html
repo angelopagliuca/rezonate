@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <div class="top-buffer"></div>
+
+  <div class="container marketing">
+
+    <p class="jumbotron text-center portal-title">PORTAL</p>
+    <p class="jumbotron text-center song-portal-title">Music Management</p>
+    <div class="row justify-content-around text-center">
+      <div class="col-lg-5">
+        <p class="portal-subtitle">Add Song</p>
+        <form action="" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="form">{{ add_song_form.as_p }}</div>
+          <button type="submit" name="add-song" class="btn song-portal-btn"><i class='fas fa-plus'></i></button>
+        </form>
+      </div>
+      <div class="col-lg-4">
+        <p class="portal-subtitle">Delete Song</p>
+        <form action="" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="form">{{ delete_song_form.as_p }}</div>
+          <button type="submit" name="delete-song" class="btn song-portal-btn"><i class='fas fa-times'></i></button>
+        </form>
+      </div>
+    </div>
+
+    <p class="jumbotron text-center song-portal-title">Feature Management</p>
+    <div class="row justify-content-around text-center">
+      <div class="col-lg-4">
+        <p class="portal-subtitle">Add Genre</p>
+        <form action="" method="post" enctype="multipart/form-data" autocomplete="off">
+          {% csrf_token %}
+          <div class="form">{{ add_genre_form.as_p }}</div>
+          <button type="submit" name="add-genre" class="btn song-portal-btn"><i class='fas fa-plus'></i></button>
+        </form>
+      </div>
+      <div class="col-lg-4">
+        <p class="portal-subtitle">Delete Genre</p>
+        <form action="" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="form">{{ delete_genre_form.as_p }}</div>
+          <button type="submit" name="delete-genre" class="btn song-portal-btn"><i class='fas fa-times'></i></button>
+        </form>
+      </div>
+    </div>
+
+    <p class="jumbotron text-center song-portal-title">Community Management</p>
+    <div class="row justify-content-around text-center">
+      <div class="col-lg-4">
+        <p class="portal-subtitle">Add Rezonator</p>
+        <form action="" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="form">{{ add_rezonator_form.as_p }}</div>
+          <button type="submit" name="add-rezonator" class="btn song-portal-btn"><i class='fas fa-plus'></i></button>
+        </form>
+      </div>
+      <div class="col-lg-4">
+        <p class="portal-subtitle">Delete Rezonator</p>
+        <form action="" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="form">{{ delete_rezonator_form.as_p }}</div>
+          <button type="submit" name="delete-rezonator" class="btn song-portal-btn"><i class='fas fa-times'></i></button>
+        </form>
+      </div>
+      <div class="col-lg-4">
+        <p class="portal-subtitle">Delete User</p>
+        <form action="" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="form">{{ user_form.as_p }}</div>
+          <button type="submit" name="delete-user" class="btn song-portal-btn"><i class='fas fa-times'></i></button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

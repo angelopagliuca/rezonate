@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <div class="top-buffer"></div>
+
+  <div class="sidebar">
+    <form action="" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="searchbox sm-search">
+        <input type="text" placeholder="Search" name="searchbar" value="" autocomplete="off">
+        <button type="submit" class="search-btn" name="search"><i class="fas fa-search"></i></button>
+      </div>
+    </form>
+    <div class="bar-buffer"></div>
+    {% for song in songs %}
+      <div class="song-bar">
+        <img src="{{MEDIA_PREFIX}}{{ song.image }}"></img>
+        <p>{{ song.title }}</p>
+        <button class="play-bar" value="{{song.audio}}[:]{{song.image}}[:]{{song.title}}[:]{{song.artist}}[:]{{song.id}}[:]{{song.lyrics}}" onclick="initVisualizer(this)"><i class="far fa-play-circle"></i></button>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="main">
+    <div>
+      <button class="btn btn-sm float-right mr-4 lyricsBtn" type="submit" onclick="toggleLyrics(this)"><i class="fas fa-align-justify"></i></button>
+    </div>
+    <div class="container buffer dflex justify-content-center">
+      <div class="box-area">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </div>
+      <canvas id="renderer"></canvas>
+    </div>
+    <div class="musicbar">
+      <div class="row justify-content-center text-center cutrow">
+        <div class="col align-self-center center-block">
+          <div class="btn-group barwrapper">
+            <button><i class="fas fa-random barbtn" onclick="toggleShuffle(this)"></i></button>
+            <button><i class="fas fa-backward barbtn" onclick="prev()"></i></button>
+            <button class="play-circle barbtn" onclick="playOrPause()"><i id="play-pause" class="fas fa-play-circle"></i></button>
+            <button><i class="fas fa-forward barbtn" onclick="next()"></i></button>
+            <button><i class="fas fa-redo barbtn" onclick="toggleRepeat(this)"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="row cutrow">
+        <div class="col">
+          <p id="currentTime">0:00</p>
+        </div>
+        <div class="col">
+            <div class="progress" id="progress"></div>
+        </div>
+        <div class="col">
+          <p id="totalTime">0:00</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="lyricSidebar pr-2">
+    <p id="lyricText" class="text-center"></p>
+  </div>
+
+{% endblock %}

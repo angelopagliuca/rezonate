@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <div class="top-buffer"></div>
+
+  <div class="container marketing">
+
+    <p class="jumbotron text-center portal-title">PLAYLIST MANAGEMENT</p>
+
+    <p class="jumbotron text-center song-portal-title">Edit Existing Playlists</p>
+    <div class="container buffer">
+      <form method="post">
+        {% csrf_token %}
+          <div class="row">
+          {% for playlist in playlists %}
+            <div class="col col-lg-4">
+              <div class="text-center"><img class="playlist-box" src="{{MEDIA_PREFIX}}{{playlist.image}}" width="150px" height="150px"><br></div>
+              <p class="playlist-subtitle text-center">{{ playlist.title }}</p>
+              {% for song in playlist.songs.all %}
+                <div class="song-bar">
+                  <img src="{{MEDIA_PREFIX}}{{ song.image }}"></img>
+                  <p>{{ song.title }}</p>
+                  <button name="deleteSongFromPlaylist" value="{{playlist.id}}[:]{{song.id}}" class="btn song-portal-btn editPlaylistBtn" value="{{song.audio}}[:]{{song.image}}[:]{{song.title}}[:]{{song.artist}}[:]{{song.id}}[:]{{song.lyrics}}"><i class="fas fa-times"></i></button>
+                </div>
+              {% endfor %}         
+              <br><br>  
+              <p class="playlist-subtitle text-center">Add Songs to Playlist</p>
+              <div class="form">{{ add_songs_to_playlist_form.as_p }}</div>
+              <div class="text-center"><button type="submit" name="addSongsToPlaylist" value="{{playlist.id}}" class="btn song-portal-btn"><i class="fas fa-plus"></i></button></div>
+              <br>
+              <button type="submit" name="delete-playlist" class="btn song-portal-btn" value="{{playlist.id}}">DELETE PLAYLIST</button>
+            </div>
+          {% endfor %}
+        </form>
+      </div>
+    </div>
+
+    <p class="jumbotron text-center song-portal-title">Create New Playlists</p>
+    <div class="row justify-content-around text-center">
+      <div class="col-lg-4">
+        <form action="" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="form">{{ add_playlist_form.as_p }}</div>
+          <button type="submit" name="add-playlist" class="btn song-portal-btn"><i class='fas fa-plus'></i></button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,137 @@
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #181818; /*#F8F8FF;*/
+  font-family: Roboto, sans-serif;
+  color: #FFFAFA;
+}
+
+html, body {
+  height: 100%;
+}
+
+.top-buffer {
+  height: 60px;
+}
+
+.navbar-custom {
+  background-color: #181818;
+}
+
+.logo {
+  background: url("../images/icons8-audio-wave.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-right: 20px;
+  width: 32px;
+  height: 32px;
+}
+
+.app-name {
+  font-family: Roboto-Condensed;
+  font-size: 20px;
+  letter-spacing: 5px;
+  font-size: calc(11px + .5vw);
+}
+
+.title-name {
+  font-size: 17pt;
+  color: #FFFAFA;
+}
+
+.nav-link {
+  font-size: 13pt;
+}
+
+.login-title {
+  background: none;
+  font-family: Alegreya;
+  font-size: 30pt;
+  padding: 0;
+  margin: 0;
+  color: #E0E0E0;
+}
+
+.textbox {
+  overflow: hidden;
+  font-size: 20px;
+  padding: 8px 0;
+  margin: 8px 0;
+  background:
+     linear-gradient(
+       to left,
+       #5C2BE2 0,
+       #BF00FF )bottom no-repeat;
+  background-size: 100% 3px;
+}
+
+.textbox input {
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 18px;
+  margin: 0 10px;
+  color: #FFFAFA;
+  width: 85%;
+}
+
+.textbox i {
+  color: #BF00FF;
+}
+
+.btn {
+  border: 2px solid #8D2EED;
+  padding: 5px 30px;
+  color: black;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #8D2EED;
+}
+
+.login-btn {
+  margin: 25px;
+  color: #E0E0E0;
+}
+
+.login-btn:hover {
+  color: #E0E0E0;
+}
+
+.slogo {
+  background: url("../images/rezonate-logo.png") no-repeat center;
+  width: 500px;
+  height: 500px;
+}
+
+.sidebar {
+  height: calc(100% - 60px);
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 60px;
+  left: 0;
+  overflow-x: hidden;
+  background:
+     linear-gradient(
+       to bottom,
+       #5C2BE2 0,
+       #BF00FF )right no-repeat;
+  background-size: 3px 100%;
+}
+
+.sidebar a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 15pt;
+  display: block;
+}
+
+.main {
+  margin-left: 200px;
+}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="top-buffer"></div>
+
+<div class="container marketing">
+
+  <p class="jumbotron text-center portal-title">GENRES</p>
+
+  <div class="row">
+    {% for genre in genres %}
+    <div class="col-lg-2 genre-col">
+      <div class="genre-box text-center"><a href="{% url 'genre' genre=genre|lower%}"><i class="{{genre.icon}}"></i><br>{{genre.name|upper}}</a></div>
+    </div>
+    {% endfor %}
+  </div>
+
+</div>
+
+</div>
+
+{% endblock %}

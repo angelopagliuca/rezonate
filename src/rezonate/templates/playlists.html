@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="top-buffer"></div>
+
+<div class="container marketing">
+
+  <p class="jumbotron text-center portal-title">PLAYLISTS</p>
+
+  <div class="row">
+    {% for playlist in playlists %}
+      <div class="col-lg-3 playlist-col">
+        <div class="text-center"><a href="{% url 'playlist' playlist_id=playlist.id %}"><img class="playlist-box" src="{{MEDIA_PREFIX}}{{playlist.image}}" width="150px" height="150px"></a></div>
+        <p class="playlist-subtitle text-center">{{ playlist.title }}</p>
+      </div>
+    {% endfor %}
+  </div>
+
+</div>
+
+</div>
+
+{% endblock %}

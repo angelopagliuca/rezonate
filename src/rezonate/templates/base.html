@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>{% block title %}Rezonate{% endblock %}</title>
+
+    {% load static %}
+
+    {% get_media_prefix as MEDIA_PREFIX %}
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+    <!-- Fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Alegreya:700" rel="stylesheet" type="text/css" />
+
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-custom">
+        <a class="navbar-brand" href="{% url 'index' %}"><div class="logo"></div></a> <!--Audio Wave icon by Icons8-->
+        <a class="navbar-brand app-name" href="{% url 'index' %}">
+          <span class="title-name">Rezonate</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              {% if user.rezonator %}
+                <a class="nav-link" href="{% url 'portal' %}">PORTAL</a>
+              {% endif %}
+            </li>
+            {% if user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'playlist-management' %}">PLAYLIST MANAGEMENT</a>
+              </li>
+            {% endif %}
+          </ul>
+          <ul class="navbar-nav mr-auto"></ul>
+          <ul class="navbar-nav">
+            {% if user.is_authenticated %}
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{user.username}}
+                </a>
+                <div class="dropdown-menu dropdown-menu-right text-right drop-log" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item drop-txt" href="{% url 'logout' %}">LOG OUT</a>
+                </div>
+              </li>
+            {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'register' %}">Register</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">Log In</a>
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <input type="hidden" id="songs_div" value="{{songs_json}}"></input>
+
+    {% block content %}
+
+    {% endblock %}
+
+  </body>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+	<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+  <input type=hidden id="media" value="{{MEDIA_PREFIX}}"></input>
+</html>
